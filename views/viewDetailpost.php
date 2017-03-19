@@ -1,6 +1,6 @@
 
 <?php ob_start();?>
-<?php $title = $_GET['title']; ?>
+<?php $title = $articles['title']; ?>
     <div class="container-fluid bg-1 text-center">
         <div class="row">
             <div class="col-sm-12">
@@ -11,3 +11,4 @@
     </div>
 <?php $content = ob_get_clean();?>
 <?php include_once 'template.php';?>
+<!--Add comments related to that post, and add a button to comment the post -->

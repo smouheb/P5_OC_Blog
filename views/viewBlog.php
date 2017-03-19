@@ -9,12 +9,13 @@
                 <div class="col-sm-2"><?= $article['title']?></div>
                 <div class="col-sm-5"><?= $article['content']?></div>
                 <div class="col-sm-1" ><a href="<?="../controller/ControlerModel.php?title=".$article['title']?>">More</a></div>
-                <div class="col-sm-7"></div>
+                <div class="col-sm-1"></div>
             </div>
         </div>
     <?php endforeach;?>
 <?php $content = ob_get_clean();?>
 <?php include_once 'template.php';?>
+<!--Add button to add post -->
 
 
 
