@@ -4,11 +4,11 @@
         <div class="container-fluid bg-1 text-center">
             <div class="row">
                 <div class="col-sm-1">
-                    <img src="../img/<?=$article['images']?>" class="img-responsive img-rounded margin" alt="MyPicture">
+                    <img src="../img/<?=$article['images']?>" class="img-responsive img-circle margin" style="display:inline" alt="MyPicture" width="150" height="350">
                 </div>
                 <div class="col-sm-2"><?= $article['title']?></div>
                 <div class="col-sm-5"><?= $article['content']?></div>
-                <div class="col-sm-1" ><a href="<?="viewDetailpost.php?title=".$article['title']?>">Click</a></div>
+                <div class="col-sm-1" ><a href="<?="../controller/ControlerModel.php?title=".$article['title']?>">More</a></div>
                 <div class="col-sm-7"></div>
             </div>
         </div>

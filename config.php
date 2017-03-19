@@ -7,10 +7,18 @@ define('HOST',$host);
 define('ROOT_MODEL',$rootmodel);
 define('ROOT_VIEWS',$rootviews);
 
-/*function className($classname)
+function className($classname)
 {
-    require $classname . '.php';
+    if($rootmodel = true)
+    {
+        include ROOT_MODEL.$classname.'.php';
+
+    }
+    else
+    {
+        include ROOT_VIEWS.$classname.'.php';
+    }
 }
-spl_autoload_register('className');*/
+spl_autoload_register('className');
 
 
