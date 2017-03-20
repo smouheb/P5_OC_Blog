@@ -8,7 +8,7 @@
                 </div>
                 <div class="col-sm-2"><?= $article['title']?></div>
                 <div class="col-sm-5"><?= $article['content']?></div>
-                <div class="col-sm-1" ><a href="<?="../controller/ControlerModel.php?title=".$article['title']?>">More</a></div>
+                <div class="col-sm-1" ><a href="<?="../controller/ControlerModel.php?id=".$article['id']?>">More</a></div>
                 <div class="col-sm-1"></div>
             </div>
         </div>

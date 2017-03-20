@@ -2,13 +2,13 @@
 include '../config.php';
 $manager = new ModelPost();
 //include ROOT_MODEL.'modelPost.php';
-    if(isset($_GET['title']))
+    if(isset($_GET['id']))
     {
-        $idpost = $_GET['title'];
+        $idpost = $_GET['id'];
         $articles = $manager->selectPost($idpost);
         include ROOT_VIEWS.'viewDetailpost.php';
     }
-    else if($_GET['action']== 'additem')
+    else if($_GET['action']=='additem')
     {
         $title = htmlspecialchars($_POST['title']);
         $content = htmlspecialchars($_POST['content']);

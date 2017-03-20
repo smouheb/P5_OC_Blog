@@ -20,7 +20,7 @@ class ModelPost extends ModelConfig
         $sql = 'SELECT title, content, date_article, images.images
                 FROM articles 
                 INNER JOIN images ON images.id = articles.id_image
-                WHERE title = ?';
+                WHERE articles.id = ?';
 
        $result = $this->queryBdd($sql, array($idpost));
 
