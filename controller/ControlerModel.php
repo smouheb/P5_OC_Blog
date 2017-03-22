@@ -1,8 +1,9 @@
 <?php
 include '../config.php';
+include '../entities/Articles.php';
 $manager = new ModelPost();
 //include ROOT_MODEL.'modelPost.php';
-    if(isset($_GET['id']))
+    /*if(isset($_GET['id']))
     {
         $idpost = $_GET['id'];
         $articles = $manager->selectPost($idpost);
@@ -19,4 +20,14 @@ $manager = new ModelPost();
     {
         $articles = $manager->selectAllPost();
         include_once ROOT_VIEWS.'viewBlog.php';
-    }
+    }*/
+//A rajouter dans les views
+//coder le controler Article
+
+$m = $manager->selectAllPost();
+
+foreach ($m as $r)
+{
+    echo "<div>".$r->getTitle()." ".$r->getContent()."</div>"."<br>";
+}
+/* je veux utiliser le getter pour recuperer les donnes de la bdd*/

@@ -1,5 +1,4 @@
 <?php
-require_once 'modelConfig.php';
 /**
  * Controler to create, modify and delete posts
  *
@@ -15,11 +14,11 @@ class ModelPost extends ModelConfig
 
     }
     //This is to select a specific post based on a click on the link where the id will be sent with $GET
-    Public function selectPost($idpost)
+    Public function selectPost(Article $idpost)
     {
         $sql = 'SELECT title, content, date_article, images.images
                 FROM articles 
-                INNER JOIN images ON images.id = articles.id_image
+                LEFT JOIN images ON images.id = articles.id_image
                 WHERE articles.id = ?';
 
        $result = $this->queryBdd($sql, array($idpost));
@@ -35,15 +34,20 @@ class ModelPost extends ModelConfig
     // Select all the posts for page "Blog"
     Public function selectAllPost()
     {
-        $sql = 'SELECT *, images.images 
+        //change the query to get the data using the article class instead of using the method in the controler
+        $sql = $this->getBdd()->query('SELECT *, images.images 
                 FROM articles 
-                INNER JOIN images ON images.id = articles.id_image 
+                LEFT JOIN images ON images.id = articles.id_image 
                 ORDER BY date_article DESC 
-                LIMIT 0,10';
+                LIMIT 0,10');
 
-        $result = $this->queryBdd($sql);
+       while($result = $sql->fetch())
+       {
+           $r[]= new Article($result);
 
-        return $result;
+       }
+       return $r;
+        //$result = $this->queryBdd($sql);
     }
 
     //For Admin where the user will be allowed to delete a specific post based on the id with $GET

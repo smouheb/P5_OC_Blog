@@ -18,7 +18,12 @@ class ModelConfig
         return $this->bdd;
     }
 
-    Public function queryBdd($sql, $param = null)
+    public function getBdd()
+    {
+        return $this->bdd;
+    }
+
+    /*Public function queryBdd($sql, $param = null)
     {
         //if we need a simple sql request without specific parameter then the first is executed else the second as a prepared query
         if($param === null)
@@ -33,6 +38,6 @@ class ModelConfig
         }
 
         return $result;
-    }
+    }*/
 
 }
