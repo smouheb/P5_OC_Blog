@@ -25,7 +25,7 @@
                 </div>
                 <div class="collapse navbar-collapse" id="myNavbar">
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="../controller/ControlerModel.php">Blog</a></li>
+                        <li><a href="../Controler/articleSelect.php">Blog</a></li>
                         <li><a href="#">Contact</a></li>
                     </ul>
                 </div>

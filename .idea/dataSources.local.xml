@@ -9,7 +9,9 @@
       <case-sensitivity plain-identifiers="mixed" quoted-identifiers="upper" />
       <secret-storage>master_key</secret-storage>
       <user-name>root</user-name>
+      <introspection-schemas>*:P5_OC</introspection-schemas>
       <resolve-scope>P5_OC:</resolve-scope>
+      <unqualified-resolve-schemas>P5_OC:</unqualified-resolve-schemas>
     </data-source>
   </component>
 </project>

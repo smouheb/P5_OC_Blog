@@ -1,14 +1,13 @@
 <?php ob_start();?>
     <?php $title = 'List of Posts'; ?>
-    <?php foreach ($articles as $article): ?>
+    <?php foreach ($m as $result): ?>
         <div class="container-fluid bg-1 text-center">
             <div class="row">
-                <div class="col-sm-1">
-                    <img src="../img/<?=$article['images']?>" class="img-responsive img-circle margin" style="display:inline" alt="MyPicture" width="150" height="350">
-                </div>
-                <div class="col-sm-2"><?= $article['title']?></div>
-                <div class="col-sm-5"><?= $article['content']?></div>
-                <div class="col-sm-1" ><a href="<?="../controller/ControlerModel.php?id=".$article['id']?>">More</a></div>
+                <div class="col-sm-1"><?= $result->getTitle()?></div>
+                <div class="col-sm-5"><?= $result->getContent()?></div>
+                <a class="btn btn-primary" href="<?="../Controler/articleDetails.php?id=".$result->getId();?>" role="button">
+                    More
+                </a>
                 <div class="col-sm-1"></div>
             </div>
         </div>
