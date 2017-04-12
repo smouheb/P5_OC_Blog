@@ -3,7 +3,7 @@
  * Class ClassConfig to set up the connection to bdd
  * To provide other Classes related to the model to use a method dedicated to query
  */
-class Config
+class BddConfig
 {
     Private $bdd;
 

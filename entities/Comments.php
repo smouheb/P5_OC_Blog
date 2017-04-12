@@ -66,12 +66,7 @@ class Comments
 
     public function setDate($date)
     {
-        $date = explode("-", $date);
-        $year = $date[0];
-        $month= $date[1];
-        $day = $date[2];
 
-        $date = $day."/".$month."/".$year;
 
         $this->date = $date;
     }
@@ -81,5 +76,17 @@ class Comments
         $name = ucfirst($name);
 
         $this->name = $name;
+    }
+
+    public function getDateFr()
+    {
+        $date = explode("-", $date);
+        $year = $date[0];
+        $month= $date[1];
+        $day = $date[2];
+
+        $date = $day."/".$month."/".$year;
+
+        return $date;
     }
 }

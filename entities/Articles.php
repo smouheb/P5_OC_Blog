@@ -25,7 +25,7 @@ class Articles
             }
         }
     }
-    //getters for all attributes related to the columns/entries of Article's table in the bdd
+    //Getters for all attributes related to the columns/entries of Article's table in the bdd
     public function getTitle()
     {
 
@@ -43,7 +43,7 @@ class Articles
         return $this->id;
     }
 
-    //setters for all attributes related to the columns/entries of Article's table in the bdd
+    //Setters for all attributes related to the columns/entries of Article's table in the bdd
     public function setTitle($title)
     {
         $this->title = $title;

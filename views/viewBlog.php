@@ -13,7 +13,7 @@
         </div>
     <?php endforeach;?>
 <?php $content = ob_get_clean();?>
-<?php include_once 'template.php';?>
+<?php include_once '_template.php';?>
 <!--Add button to add post -->
 
 

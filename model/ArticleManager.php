@@ -3,7 +3,7 @@
  * Class to select blog's post and also the detail view of the post showing the comments
  *
  */
-class Post extends Config
+class ArticleManager extends BddConfig
 {
 
     //This is to select a specific post based on a click on the link where the id will be sent with $GET
@@ -19,7 +19,6 @@ class Post extends Config
        $result = $sql->fetch();
 
        $r[] = new Articles($result);
-
        return $r;
     }
 
