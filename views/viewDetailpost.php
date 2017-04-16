@@ -4,7 +4,7 @@
 
     <div class="container-fluid bg-1 text-center">
         <div class="row">
-            <div class="col-sm-12"><?= $result->getContent()?></div>
+            <div class="col-sm-4"><?= $result->getContent()?></div>
         </div>
     </div>
 <?php endforeach; ?>

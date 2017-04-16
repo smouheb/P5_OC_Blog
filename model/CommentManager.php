@@ -36,7 +36,6 @@ class CommentManager extends BddConfig
         $sql3->execute();
 
     }
-
     /*
      * Selection of all comments for the selected article
      * @return array
@@ -45,10 +44,11 @@ class CommentManager extends BddConfig
     {
         $db = $this->getBdd();
 
-        $sql = $db->prepare('SELECT c.comment, c.date_comment as date
+        $sql = $db->prepare('SELECT c.comment, c.date_comment  date, c.id  idcomment, cn.first_name  name
                                           FROM comments as c 
                                           INNER JOIN joint_a_comments on joint_a_comments.id_comment = c.id
                                           INNER JOIN articles a ON joint_a_comments.id_article = a.id
+                                          INNER JOIN contact_names cn ON cn.id_comment = c.id
                                           WHERE a.id = ?
                                           ORDER BY c.date_comment DESC 
                                           LIMIT 0,10');
@@ -61,40 +61,30 @@ class CommentManager extends BddConfig
         }
 
         return $rescomment;
-
-    }
-
-    public function deleteComment($idpost)
-    {
-        $sql = 'DELETE FROM articles WHERE id = ?';
-
-        $result = $this->queryBdd($sql, array($idpost));
     }
     /*
-     * Merge insert and Update with conditions
-     * For Admin where the user will be allowed to update a specific post based on the id with $GET
+     * @param int ID related to the comment to delete or edit
      */
-    public function updateComment($idpost, $title, $content)
+    public function delComment($idcomment)
     {
-        if(isset($title) && isset($content))
-        {
-            $sql = 'UPDATE articles SET title = ?, content = ?, date_article = NOW() WHERE id = ?';
+        $db = $this->getBdd();
 
-            $result = $this->queryBdd($sql, array($idpost, $title, $content));
-        }
-        elseif(!isset($title) && isset($content))
-        {
-            $sql = 'UPDATE articles SET content = ?, date_article = NOW() WHERE id = ?';
+            $sql = $db->prepare( 'DELETE FROM comments 
+                                            WHERE id = ?');
+            $sql->execute(array($idcomment));
+    }
+    /*
+     * @param int ID related to the comment to delete or edit
+     * @param string related to the new comment to update
+     */
+    public function editComment($comment,$idcomment)
+    {
+        $db = $this->getBdd();
 
-            $result = $this->queryBdd($sql, array($idpost, $content));
-        }
-        elseif (isset($title) && !isset($content))
-        {
-            $sql = 'UPDATE articles SET title = ?, date_article = NOW() WHERE id = ?';
-
-            $result = $this->queryBdd($sql, array($idpost, $title));
-        }
-        return $result;
+        $sql = $db->prepare( 'UPDATE comments 
+                                        SET comment = ?, date_comment = NOW()
+                                        WHERE id = ?');
+        $sql->execute(array($comment,$idcomment));
 
     }
 }

@@ -52,7 +52,7 @@
                         <div class="col-sm-2">
                             <div id="content">
                                 <tr>
-                                    <th><?= $comment; ?>
+                                    <th><?= $comment; ?></th>
                                 </tr>
                             </div>
                         </div>
@@ -83,4 +83,11 @@
             <p>Copyright LetMeDev4-U</p>
         </footer>
     </body>
+    <script>
+        $(function () {
+            $("#editField").on('click',function () {
+                $(".hiddenField").show().slideDown(800);
+            });
+        });
+    </script>
 </html>

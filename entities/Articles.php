@@ -9,7 +9,6 @@ class Articles
     {
         $this->hydrate($data, $clean);
     }
-
     public function hydrate(array $data, $clean=0)
     {
         foreach ($data as $key=>$value)

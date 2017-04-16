@@ -7,12 +7,17 @@ include '../config.php';
 $manager = new ArticleManager();
 $r = (int)$_GET['id'];
 $details = $manager->selectPost($r);
-
+/*
+ * Instantiation of Comment's Class manager to get all comments related to an article using the ID
+ * @param int - Id of the related article to get the comments accordingly
+ */
 $comments = new CommentManager();
 $com = $comments->selectAllComment($r);
+
 /*
  * Inclusion of related views
  */
 include ROOT_VIEWS.'viewComment.php';
 include ROOT_VIEWS.'viewDetailpost.php';
 include ROOT_VIEWS.'_templateForm.php';
+
