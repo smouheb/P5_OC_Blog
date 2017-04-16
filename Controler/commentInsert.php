@@ -6,7 +6,7 @@ $commentForm = new Comments($value, 1);
 $commentForm->setIdComment($id);
 $manager = new CommentManager();
 $manager->insertPost($commentForm);
-header('Location:articleSelect.php');
+header('Location:articleDetails.php?id='.$id);
 /*
  * Creer function pour les $values = $_POST['values'] -> Done
  * changer insert post -> Done

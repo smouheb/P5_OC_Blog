@@ -42,18 +42,20 @@
                                 <th><?= $content; ?></th>
                             </tr>
                         </div>
-                        <br>
                     </div>
                 </table>
             </div>
             <div class="container-fluid bg-1 text-center">
                 <table class="table">
                     <div class="row">
-                        <div class="col-sm-2">
+                        <div class="col-sm-6">
                             <div id="content">
-                                <tr>
-                                    <th><?= $comment; ?></th>
-                                </tr>
+                                <div class="row">
+                                    <h3 class="col-sm-offset-10 col-sm-10"><?= $titlecomment ?></h3>
+                                    <tr>
+                                        <th><?= $comment; ?></th>
+                                    </tr>
+                                </div>
                             </div>
                         </div>
                         <br>
@@ -85,8 +87,8 @@
     </body>
     <script>
         $(function () {
-            $("#editField").on('click',function () {
-                $(".hiddenField").show().slideDown(800);
+            $(".editField").on('click',function () {
+                $(".hiddenField").toggle();
             });
         });
     </script>
