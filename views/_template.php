@@ -26,7 +26,7 @@
                 <div class="collapse navbar-collapse" id="myNavbar">
                     <ul class="nav navbar-nav navbar-right">
                         <li><a href="../Controler/articleSelect.php">Blog</a></li>
-                        <li><a href="#">Contact</a></li>
+                        <li><a href="../views/_templateContact.php">Contact</a></li>
                     </ul>
                 </div>
             </div>
@@ -43,6 +43,13 @@
         <!-- Footer -->
         <footer class="container-fluid bg-4 text-center">
             <p>Copyright LetMeDev4-U</p>
+            <div class="row">
+                <div class="col-md-offset-10 col-md-3">
+                    <a href="../views/_templateArticleInsert.php">
+                        Admin
+                    </a>
+                </div>
+            </div>
         </footer>
     </body>
 </html>

@@ -39,4 +39,15 @@ class ArticleManager extends BddConfig
        }
        return $r;
     }
+
+    public function insertArticle($title, $content)
+    {
+        $db = $this->getBdd();
+
+        $sql = $db->prepare('INSERT INTO articles (title, content)
+                                       VALUES (?, ?)');
+
+        $sql->execute(array($title, $content));
+
+    }
 }
