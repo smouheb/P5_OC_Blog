@@ -53,7 +53,7 @@
                             <label for="yourText">Enter your text</label>
                             <textarea rows="4" class="form-control col-lg-12" placeholder="Enter your text here"></textarea>
                         </div>
-                        <button type="submit" class="btn btn-default">Submit</button>
+                        <button type="submit" class="btn btn-primary">Submit</button>
                     </form>
                 </div>
                 <div class="col-md-offset-1 col-md-3">
@@ -76,17 +76,20 @@
                     </div>
                 </div>
             </div>
+            <br/>
         </div>
         <!-- Footer -->
-        <footer class="container-fluid bg-4 text-center">
-            <p>Copyright LetMeDev4-U</p>
-            <div class="row">
-                <div class="col-md-offset-10 col-md-3">
-                    <a href="../views/_templateArticleInsert.php">
-                        Admin
-                    </a>
+        <div class="container-fluid bg-4 text-center">
+            <footer>
+                <p>Copyright LetMeDev4-U</p>
+                <div class="row">
+                    <div class="col-md-offset-10 col-md-3">
+                        <a href="../views/_templateArticleInsert.php">
+                            Admin
+                        </a>
+                    </div>
                 </div>
-            </div>
-        </footer>
+            </footer>
+        </div>
     </body>
 </html>

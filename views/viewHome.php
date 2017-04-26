@@ -65,8 +65,10 @@
                     </div>
                 </div>
             </div>
+        </div>
             <!-- Footer -->
-            <footer class="container-fluid bg-4 text-center">
+        <div class="container-fluid bg-4 text-center">
+            <footer>
                 <p>Copyright LetMeDev4-U</p>
                 <div class="row">
                     <div class="col-md-offset-10 col-md-3">
