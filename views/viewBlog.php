@@ -2,13 +2,19 @@
     <?php $title = 'List of Posts'; ?>
     <?php foreach ($m as $result): ?>
         <div class="container-fluid bg-1 text-center">
-            <div class="row">
-                <div class="col-sm-1"><?= $result->getTitle()?></div>
-                <div class="col-sm-5"><?= $result->getContent()?></div>
-                <a class="btn btn-primary" href="<?="../Controler/articleDetails.php?id=".$result->getId();?>" role="button">
-                    More
-                </a>
-                <div class="col-sm-1"></div>
+            <div class="col-md-12">
+                <h1 class="col-sm-2"><?= $result->getTitle()?></h1>
+                <div class="pull-left">
+                    <span class="badge">Posted <?= $result->getDate()?></span>
+                </div>
+                <p><?= $result->getContent()?></p>
+                <span class="pull-right">
+                    <a class="btn btn-primary" href="<?="../Controler/articleDetails.php?id=".$result->getId();?>" role="button">
+                        Read more
+                    </a>
+                </span>
+                <br/>
+                <hr/>
             </div>
         </div>
     <?php endforeach;?>

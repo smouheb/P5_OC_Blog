@@ -26,7 +26,7 @@ class ArticleManager extends BddConfig
     {
         //change the query to get the data using the article class instead of using the method in the controler
         $sql = $this->getBdd()->query(
-                            'SELECT *, articles.id
+                            'SELECT *,date_article date, articles.id
                                         FROM articles
                                         ORDER BY date_article DESC 
                                         LIMIT 0,10');
@@ -44,8 +44,8 @@ class ArticleManager extends BddConfig
     {
         $db = $this->getBdd();
 
-        $sql = $db->prepare('INSERT INTO articles (title, content)
-                                       VALUES (?, ?)');
+        $sql = $db->prepare('INSERT INTO articles (title, content, date_article)
+                                       VALUES (?, ?, NOW())');
 
         $sql->execute(array($title, $content));
 

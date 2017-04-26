@@ -32,13 +32,9 @@
             </div>
         </nav>
         <div class="container-fluid bg-1 text-center">
-            <h3 class="margin"><?= $title ?></h3><br>
-            <table class="table table-hover">
-                <div class="row">
-                    <div id="content"><?= $content; ?></div>
-                    <br>
-                </div>
-            </table>
+            <h1 class="margin"><?= $title ?></h1><br>
+            <div id="content"><?= $content; ?></div>
+            <br>
         </div>
         <!-- Footer -->
         <footer class="container-fluid bg-4 text-center">

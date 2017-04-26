@@ -3,6 +3,7 @@ class Articles
 {
     private $id;
     private $title;
+    private $date;
     private $content;
 
     public function __construct($data, $clean = 0)
@@ -42,6 +43,11 @@ class Articles
         return $this->id;
     }
 
+    public function getDate()
+    {
+        return $this->date;
+    }
+
     //Setters for all attributes related to the columns/entries of Article's table in the bdd
     public function setTitle($title)
     {
@@ -62,5 +68,9 @@ class Articles
             echo "this is expected to be a number";
         }
         $this->id = $id;
+    }
+    public function setDate($date)
+    {
+        $this->date = $date;
     }
 }
