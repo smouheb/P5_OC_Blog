@@ -8,7 +8,7 @@
                 </div>
                 <div class="row">
                     <div class="pull-left">
-                        <span class="badge">Posted <?= $result->getDate()?></span>
+                        <span class="badge">Date<?= $result->getDate()?></span>
                     </div>
                     <div>
                         <p style="width: 500px; height: 200px; display: inline-block ; overflow: hidden"><?= $result->getContent()?></p>

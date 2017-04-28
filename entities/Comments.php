@@ -66,8 +66,6 @@ class Comments
 
     public function setDate($date)
     {
-
-
         $this->date = $date;
     }
 
