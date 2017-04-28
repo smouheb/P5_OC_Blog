@@ -1,3 +1,3 @@
-Ce projet est à la création d'un simple blog pour un écrivain.
-Il est essentiellement pour apprendre PHP avec OC Dev d'applications
+This a blog that I have created with PHP.
+Can be used and by anyone interested
 
