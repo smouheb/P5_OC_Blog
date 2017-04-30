@@ -63,7 +63,7 @@
                             <i class="fa fa-envelope"></i>
                         </a>
                     </div>
-                    <div class="text-left col-xs-11">
+                    <div class="text-left col-xs-10">
                         <a href="mailto:smael.mouheb@gmail.com">
                             smael.mouheb@gmail.com
                         </a>
@@ -71,7 +71,7 @@
                     <div class="col-xs-1">
                         <i class="fa fa-phone"></i>
                     </div>
-                    <div class="text-left col-xs-11">
+                    <div class="text-left col-xs-10">
                         <p>+352.661.661.196</p>
                     </div>
                 </div>

@@ -32,37 +32,24 @@
                 </div>
             </div>
         </nav>
-            <div class="container-fluid bg-1 text-center">
-                <h3 class="margin"><?= $title ?></h3>
-                <br>
-                <table class="table">
-                    <div class="row">
-                        <div id="content">
-                            <tr>
-                                <th><?= $content; ?></th>
-                            </tr>
-                        </div>
-                    </div>
-                </table>
+        <div class="container-fluid bg-1 text-center">
+            <h3 class="margin"><?= $title ?></h3>
+            <br>
+            <div class="row">
+                <p><?= $content; ?></p>
             </div>
-            <div class="container-fluid bg-1 text-center">
-                <table class="table">
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <div id="content">
-                                <div class="row">
-                                    <h3 class="col-sm-offset-10 col-sm-10"><?= $titlecomment ?></h3>
-                                    <tr>
-                                        <th><?= $comment; ?></th>
-                                    </tr>
-                                </div>
-                            </div>
-                        </div>
-                        <br>
+        </div>
+        <div class="container-fluid bg-2" style="padding-top: 0; margin: 0;">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h3 class="pull-center"><?= $titlecomment ?></h3>
+                    <div>
+                        <div><?= $comment; ?></div>
                     </div>
-                </table>
+                </div>
             </div>
-            <div class="container-fluid bg-4">
+        </div>
+        <div class="container-fluid bg-4">
                 <form class="bg-1" method="POST" action="<?="../Controler/commentInsert.php?id=".urldecode($id)?>">
                     <div class="row">
                         <div class="col-sm-offset-1 col-sm-4">
