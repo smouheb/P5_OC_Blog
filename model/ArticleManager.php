@@ -1,7 +1,7 @@
 <?php
 /**
  * Class to select blog's post and also the detail view of the post showing the comments
- *
+ * Added a method to insert Articles in the admin page
  */
 class ArticleManager extends BddConfig
 {
@@ -24,10 +24,14 @@ class ArticleManager extends BddConfig
 
     Public function selectAllPost()
     {
-        //change the query to get the data using the article class instead of using the method in the controler
+        /*
+         * change the query to get the data using the article class instead of using the method in the controler
+         * added joint query for user name as it is in a separate table
+         */
         $sql = $this->getBdd()->query(
-                            'SELECT *,date_article date, articles.id
+                            'SELECT *,date_article date, articles.id, users.user_name name
                                         FROM articles
+                                        INNER JOIN users ON users.id = articles.id_user
                                         ORDER BY date_article DESC 
                                         LIMIT 0,10');
 

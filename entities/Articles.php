@@ -3,6 +3,7 @@ class Articles
 {
     private $id;
     private $title;
+    private $name;
     private $date;
     private $content;
 
@@ -18,13 +19,15 @@ class Articles
 
             if(method_exists($this, $method))
             {
-                //Added $clean variable to protect the value insterted in db as this will be set and used in dbmanager
+                //Added $clean variable to protect the value inserted in db as this will be set and used in dbmanager
+
                 if($clean == 1) $value = htmlspecialchars($value);
 
                 $this->$method($value);
             }
         }
     }
+
     //Getters for all attributes related to the columns/entries of Article's table in the bdd
     public function getTitle()
     {
@@ -45,7 +48,11 @@ class Articles
 
     public function getDate()
     {
-        return $this->date;
+        return $this->newDate();
+    }
+    public function getName()
+    {
+        return $this->name;
     }
 
     //Setters for all attributes related to the columns/entries of Article's table in the bdd
@@ -69,8 +76,33 @@ class Articles
         }
         $this->id = $id;
     }
+
+    public function setName($name)
+    {
+        $this->name = $name;
+    }
+
     public function setDate($date)
     {
         $this->date = $date;
+    }
+    /*
+     * Private function as not to be used outside of this scope
+     * Retrieve the date from the db and first got rid of the time with dateNew
+     * Then I changed the order of the date format to be in line with us format
+     */
+    private function newDate()
+    {
+        $date = $this->date;
+        $dateNew = explode(" ", $date);
+        $datechanged = $dateNew[0];
+        $datechanged = explode("-", $datechanged);
+        $year = $datechanged[0];
+        $month = $datechanged[1];
+        $day = $datechanged[2];
+        $datwithouthour = $month." ".$day." ".$year;
+
+        return $datwithouthour;
+
     }
 }
