@@ -31,8 +31,32 @@
                 </div>
             </div>
         </nav>
-        <div class="container-fluid bg-4">
+        <div class="col-md-12 container-fluid bg-2">
+            <h3 class="text-center"><?= $title ?></h3>
+            <br/>
+            <table class="table table-bordered bg-1 text-center">
+                <tr>
+                    <td>id</td>
+                    <td>title</td>
+                    <td>content</td>
+                    <td>Maintenance</td>
+                </tr>
+                <tr>
+                    <td><?= $content; ?></td>
+                </tr>
+            </table>
+        </div>
+        <div class="container-fluid bg-2">
+            <h3>Add New Articles</h3>
             <form class="bg-1" method="POST" action="../Controler/articleInsert.php">
+                <div class="row">
+                    <div class="col-sm-offset-1 col-sm-4">
+                        <div class="form-group">
+                            <label for="enterYourName">Name</label>
+                            <input class="form-control" name="value[name]" type="text">
+                        </div>
+                    </div>
+                </div>
                 <div class="row">
                     <div class="col-sm-offset-1 col-sm-4">
                         <div class="form-group">
@@ -40,13 +64,15 @@
                             <input class="form-control" name="value[title]" type="text">
                         </div>
                     </div>
-                    <div class="form-group row">
+                    <div class="row">
                         <label class="col-sm-offset-1 col-sm-12" for="enterText">Content</label>
                         <div class="col-sm-offset-1 col-sm-6">
                             <textarea class="form-control" rows="3" name="value[content]"></textarea>
                         </div>
                     </div>
                     <button type="submit" class="col-sm-offset-1 btn btn-primary">Submit</button>
+                    <br/>
+                </div>
             </form>
         </div>
         <!-- Footer -->
@@ -55,7 +81,7 @@
                 <p>Copyright LetMeDev4-U</p>
                 <div class="row">
                     <div class="col-md-offset-10 col-md-3">
-                        <a href="../views/_templateArticleInsert.php">
+                        <a href="../Controler/articleAdmin.php">
                             Admin
                         </a>
                     </div>
@@ -63,4 +89,11 @@
             </footer>
         </div>
     </body>
+    <script>
+        $(function () {
+            $('.editField').on('click', function () {
+                $(this).closest('tr').find('.newa').toggle();
+            });
+        });
+    </script>
 </html>

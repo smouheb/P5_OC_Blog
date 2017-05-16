@@ -44,7 +44,7 @@
                 <p>Copyright LetMeDev4-U</p>
                 <div class="row">
                     <div class="col-md-offset-10 col-md-3">
-                        <a href="../views/_templateArticleInsert.php">
+                        <a href="../Controler/articleAdmin.php">
                             Admin
                         </a>
                     </div>

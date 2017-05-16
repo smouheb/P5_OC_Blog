@@ -44,14 +44,45 @@ class ArticleManager extends BddConfig
        return $r;
     }
 
-    public function insertArticle($title, $content)
+    public function insertArticle($name, $title, $content)
     {
         $db = $this->getBdd();
 
-        $sql = $db->prepare('INSERT INTO articles (title, content, date_article)
-                                       VALUES (?, ?, NOW())');
+        $sql2 = $db->prepare('INSERT INTO users(user_name, date_entry) VALUES (?, now())');
 
-        $sql->execute(array($title, $content));
+        $sql2->execute(array($name));
+
+        $commentId = $db->query('SELECT LAST_INSERT_ID()')->fetchColumn();
+
+        $sql = $db->prepare('INSERT INTO articles (title, content, date_article, id_user)
+                                       VALUES (?, ?,NOW(), ?)');
+
+        $sql->execute(array($title, $content, $commentId));
+
+    }
+    /*
+     * @param int ID related to the comment to delete or edit
+     */
+    public function delArticle($idarticle)
+    {
+        $db = $this->getBdd();
+
+        $sql = $db->prepare( 'DELETE FROM articles 
+                                            WHERE id = ?');
+        $sql->execute(array($idarticle));
+    }
+    /*
+     * @param int ID related to the comment to delete or edit
+     * @param string related to the new comment to update
+     */
+    public function editComment($content,$idarticle)
+    {
+        $db = $this->getBdd();
+
+        $sql = $db->prepare( 'UPDATE articles 
+                                        SET content = ?, date_article = NOW()
+                                        WHERE id = ?');
+        $sql->execute(array($content,$idarticle));
 
     }
 }

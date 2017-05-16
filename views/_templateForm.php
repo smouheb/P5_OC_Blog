@@ -12,11 +12,6 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <script src="../vendor/tinymce/tinymce/tinymce.js"></script>
-        <script type="text/javascript">
-            tinymce.init({
-                selector: '#texttiny'
-            });
-        </script>
     </head>
     <body>
         <!-- Navbar -->
@@ -56,7 +51,7 @@
             </div>
         </div>
         <div class="container-fluid bg-4">
-                <form class="bg-1" method="POST" action="<?="../Controler/commentInsert.php?id=".urldecode($id)?>">
+                <form class="bg-1" method="POST" action="<?="../Controler/commentInsert.php?id=".urlencode($id)?>">
                     <div class="row">
                         <div class="col-sm-offset-1 col-sm-4">
                             <div class="form-group">
@@ -67,7 +62,7 @@
                     <div class="form-group row">
                         <label class="col-sm-offset-1 col-sm-12" for="enterText">What do you wanna say?</label>
                         <div class="col-sm-offset-1 col-sm-6">
-                            <textarea class="form-control" rows="3" name="value[comment]"></textarea>
+                            <textarea class="form-control newcomment" rows="3" name="value[comment]"></textarea>
                         </div>
                     </div>
                         <button type="submit" class="col-sm-offset-1 btn btn-primary">Submit</button>
@@ -79,7 +74,7 @@
                 <p>Copyright LetMeDev4-U</p>
                 <div class="row">
                     <div class="col-md-offset-10 col-md-3">
-                        <a href="../views/_templateArticleInsert.php">
+                        <a href="../Controler/articleAdmin.php">
                             Admin
                         </a>
                     </div>
@@ -89,9 +84,24 @@
     </body>
     <script>
         $(function () {
+
             //function to display the text area and the button update related to the "edit" button clicked
             $(".editField").on('click',function () {
+                    tinymce.init({
+                        selector: "textarea.hiddenField",
+                        plugins: "contextmenu"
+                    });
                 $(this).closest('div.row').find('.hiddenField').toggle();
+            });
+
+            //add TinyMCE for new comments
+            $(".newcomment").on('click', function () {
+                $(this).show(function (){
+                        tinymce.init({
+                        selector: "textarea",
+                        plugins: "contextmenu"
+                    });
+                });
             });
         });
     </script>

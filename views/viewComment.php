@@ -16,8 +16,10 @@
                     <div type="button" class=" btn btn-primary editField" name="edit">Edit</div>
                     <button type="submit" class="col-sm-0.5 btn btn-primary" name="delete">Delete</button>
                 </div>
-                <textarea rows="15" class="col-md-7 hiddenField pull-right" style="display: none; color: black;" name="newcomment" id="texttiny"></textarea>
-                <button type="submit" class="col-lg-2 col-md-4 col-sm-1 btn btn-primary hiddenField pull-right" style="display: none" name="update">Update</button>
+                <br/>
+                <br/>
+                <textarea rows="5" class="col-md-2 hiddenField pull-center" id="texttiny" style="display: none; color: black;" name="x"></textarea>
+                <button type="submit" class="col-lg-2 col-md-4 col-sm-1 btn btn-primary hiddenField pull-center" style="display: none" name="update">Update</button>
             </div>
         </form>
     </div>

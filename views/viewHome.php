@@ -17,10 +17,13 @@
         <nav class="navbar navbar-default">
             <div class="container">
                 <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".men">
+                        <span class="icon-bar men">
+                            <a href="../Controler/articleSelect.php">Blog</a>
+                        </span>
+                        <span class="icon-bar men">
+                            <a href="../views/_templateContact.php">Contact</a>
+                        </span>
                     </button>
                     <a class="navbar-brand" href="viewHome.php">Me</a>
                 </div>
@@ -34,21 +37,34 @@
         </nav>
         <!-- First Container -->
         <div class="container-fluid bg-1 text-center">
-            <h3 class="margin">Who Am I?</h3>
-            <img src="../img/MeSma.jpg" class="img-responsive img-circle margin" style="display:inline" alt="MyPicture" width="150" height="350">
-            <h3>Web Developper</h3>
-            <p>I have been working in IT in different fields, from test engineer to project manager... but what I really love is writing codes... building stuff and enjoying the result.
-            Can be furstrating at times, but for every project I'm working on, I always enjoy the journey</p>
+            <h3 class="margin">Web Developper</h3>
+            <img src="../img/MeSma.jpg" class="img-responsive img-circle margin" style="display:inline" alt="MyPicture" width="250" height="350">
+            <div class="col-md-12">
+            <h3 class="pull-center">Who am I ?</h3>
+            <div class="row">
+                <p>
+                First of all, I am a web enthousiast!<br/> Ok... let's be serious for a minute...
+                <br/>I have been working in IT for a longtime,mainly as an analyst (test engineer, Functional analyst, project manager etc...) with over 10 years of experience.
+                <br/>But what I really love is writing codes... building stuff and enjoying the result. It can definitely be frustrating at times,
+                however in every project I'm working on,
+                <br/>I always e njoy the journey.
+                </p>
+            </div>
+            </div>
         </div>
         <!-- Second Container -->
         <div class="container-fluid bg-2 text-center">
-            <h3 class="margin">You want to see my CV, here it is: </h3>
+            <h3 class="margin">My experience outlined right here
+                <a href="../img/MOUHEB_Smael.pdf" style="">
+                    <i style="color:white;" class="fa fa-file-pdf-o"></i>
+                </a>
+            </h3>
         </div>
         <!-- Third Container (Grid) -->
         <div class="container-fluid bg-3 text-center">
             <h5 class="margin row">Where To Find Me?</h5><br>
             <div class="row">
-                <div class="col-lg-offset-4">
+                <div class="col-lg-offset-4 pull-center">
                     <div class="col-sm-2">
                         <a href="https://twitter.com/ismamouheb"  alt="LinkTwitter"><i class="fa fa-twitter fa-4x follow"></i></a>
                     </div>
@@ -97,15 +113,15 @@
                             <i class="fa fa-envelope"></i>
                         </a>
                     </div>
-                    <div class="text-left col-xs-10">
+                    <div class="text-left col-md-10 col-xs-11">
                         <a href="mailto:smael.mouheb@gmail.com">
                             smael.mouheb@gmail.com
                         </a>
                     </div>
-                    <div class="col-xs-1">
+                    <div class="col-md-2 col-xs-1">
                         <i class="fa fa-phone"></i>
                     </div>
-                    <div class="text-left col-xs-10">
+                    <div class="text-left col-md-10 col-xs-11">
                         <p>+352.661.661.196</p>
                     </div>
                 </div>
@@ -118,7 +134,7 @@
                 <p>Copyright LetMeDev4-U</p>
                 <div class="row">
                     <div class="col-md-offset-10 col-md-3">
-                        <a href="_templateArticleInsert.php">
+                        <a href="../Controler/articleAdmin.php">
                             Admin
                         </a>
                     </div>

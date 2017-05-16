@@ -6,9 +6,11 @@ class CommentManager extends BddConfig
     {
         $db = $this->getBdd();
 
+        $protectedinsert = $commentForm->getComment();
+
         $sql = $db->prepare('INSERT INTO comments(comment, date_comment) 
-                                                    VALUES (?,NOW())');
-        $sql->execute(array($commentForm->getComment()));
+                                      VALUES (?,NOW())');
+        $sql->execute(array($protectedinsert));
         /*
          * copy entry de la table vers joint_a_comment, peut etre créer une autre method
          */

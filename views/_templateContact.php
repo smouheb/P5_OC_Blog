@@ -63,7 +63,7 @@
                             <i class="fa fa-envelope"></i>
                         </a>
                     </div>
-                    <div class="text-left col-xs-10">
+                    <div class="text-left col-md-10 col-xs-11">
                         <a href="mailto:smael.mouheb@gmail.com">
                             smael.mouheb@gmail.com
                         </a>
@@ -71,7 +71,7 @@
                     <div class="col-xs-1">
                         <i class="fa fa-phone"></i>
                     </div>
-                    <div class="text-left col-xs-10">
+                    <div class="text-left col-md-10 col-xs-11">
                         <p>+352.661.661.196</p>
                     </div>
                 </div>
@@ -84,7 +84,7 @@
                 <p>Copyright LetMeDev4-U</p>
                 <div class="row">
                     <div class="col-md-offset-10 col-md-3">
-                        <a href="../views/_templateArticleInsert.php">
+                        <a href="../Controler/articleAdmin.php">
                             Admin
                         </a>
                     </div>
