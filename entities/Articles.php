@@ -6,6 +6,7 @@ class Articles
     private $name;
     private $date;
     private $content;
+    private $chapo;
 
     public function __construct($data, $clean = 0)
     {
@@ -55,16 +56,35 @@ class Articles
         return $this->name;
     }
 
+    public function getChapo()
+    {
+
+        return $this->chapo;
+    }
+
     //Setters for all attributes related to the columns/entries of Article's table in the bdd
     public function setTitle($title)
     {
-        $this->title = $title;
+        $title = trim($title);
+
+        if(is_string($title)){
+
+            $this->title = $title;
+
+        }
     }
 
     public function setContent($content)
     {
-        $this->content = $content;
+        $content = trim($content);
+
+        if(is_string($content)){
+
+            $this->content = $content;
+
+        }
     }
+
 
     public function setId($id)
     {
@@ -72,7 +92,7 @@ class Articles
 
         if(!is_int($id))
         {
-            echo "this is expected to be a number";
+            throw new Exception("this is expected to be a number");
         }
         $this->id = $id;
     }
@@ -85,6 +105,17 @@ class Articles
     public function setDate($date)
     {
         $this->date = $date;
+    }
+
+    public function setChapo($chapo)
+    {
+        $chapo = trim($chapo);
+
+        if(is_string($chapo)){
+
+            $this->chapo = $chapo;
+        }
+
     }
     /*
      * Private function as not to be used outside of this scope

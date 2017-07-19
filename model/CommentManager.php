@@ -12,7 +12,7 @@ class CommentManager extends BddConfig
                                       VALUES (?,NOW())');
         $sql->execute(array($protectedinsert));
         /*
-         * copy entry de la table vers joint_a_comment, peut etre créer une autre method
+         * copy entry de la table vers joint_a_comment
          */
         $commentId = $db->query('SELECT LAST_INSERT_ID()')->fetchColumn();
 

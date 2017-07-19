@@ -4,7 +4,7 @@
     <?php $idcomment = $c->getIdComment()?>
     <?php $id = (int)$_GET['id'] ?>
     <div class="container-fluid bg-1 text-center" style="padding: 20px;">
-        <form method ="POST" action="<?="../Controler/commentDelOrUpdate.php?idcomment=".$idcomment."&id=".$id;?>">
+        <form method ="POST" action="<?="../index.php/commentDelOrUpdate/".$idcomment."/update" // and $id to refresh the page;?>">
             <div class="row">
                 <div class="label label-info pull-left"><?= $c->getDate()?> by <?= $c->getName()?></div>
             </div>
@@ -14,7 +14,9 @@
                 <br/>
                 <div class="pull-left">
                     <div type="button" class=" btn btn-primary editField" name="edit">Edit</div>
-                    <button type="submit" class="col-sm-0.5 btn btn-primary" name="delete">Delete</button>
+                    <button type="submit" class="col-sm-0.5 btn btn-primary">
+                        <a href="<?="../index.php/commentDelOrUpdate/".urlencode($idcomment)."/delete"?>">Delete</a>
+                    </button>
                 </div>
                 <br/>
                 <br/>

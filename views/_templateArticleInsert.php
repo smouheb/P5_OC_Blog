@@ -1,36 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <!-- Template -->
-        <title>LetMeDev4-U</title>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-        <link rel="stylesheet" href="../views/style.css">
-        <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    </head>
-    <body>
-        <!-- Navbar -->
-        <nav class="navbar navbar-default">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="../views/viewHome.php">Me</a>
-                </div>
-                <div class="collapse navbar-collapse" id="myNavbar">
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a href="../Controler/articleSelect.php">Blog</a></li>
-                        <li><a href="../views/_templateContact.php">Contact</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+<?php require "header.php"?>
         <div class="col-md-12 container-fluid bg-2">
             <h3 class="text-center"><?= $title ?></h3>
             <br/>
@@ -38,8 +6,9 @@
                 <tr>
                     <td>id</td>
                     <td>title</td>
+                    <td>chapo</td>
                     <td>content</td>
-                    <td>Maintenance</td>
+                    <td>Edit</td>
                 </tr>
                 <tr>
                     <td><?= $content; ?></td>
@@ -48,52 +17,71 @@
         </div>
         <div class="container-fluid bg-2">
             <h3>Add New Articles</h3>
-            <form class="bg-1" method="POST" action="../Controler/articleInsert.php">
+            <form class="bg-1" method="POST" action="<?="../index.php/articleInsert"?>">
                 <div class="row">
-                    <div class="col-sm-offset-1 col-sm-4">
+                    <div class="col-sm-offset-1 col-sm-2">
                         <div class="form-group">
                             <label for="enterYourName">Name</label>
-                            <input class="form-control" name="value[name]" type="text">
+                            <input class="form-control inp" name="value[name]" type="text"  minlength="4" required>
                         </div>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-sm-offset-1 col-sm-4">
+                    <div class="col-sm-offset-1 col-sm-2">
                         <div class="form-group">
                             <label for="enterYourName">Title</label>
-                            <input class="form-control" name="value[title]" type="text">
+                            <input class="form-control inp" name="value[title]" type="text" minlength="5" maxlength="50" required>
                         </div>
                     </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-offset-1 col-sm-6">
+                        <div class="form-group">
+                            <label for="enterYourName">Chapo</label>
+                            <textarea class="form-control inp" rows="2" name="value[chapo]" minlength="50" maxlength="150" required></textarea>
+                        </div>
+                    </div>
+                </div>
                     <div class="row">
                         <label class="col-sm-offset-1 col-sm-12" for="enterText">Content</label>
                         <div class="col-sm-offset-1 col-sm-6">
-                            <textarea class="form-control" rows="3" name="value[content]"></textarea>
+                            <textarea class="form-control inp" rows="8" name="value[content]" minlength="50" required></textarea>
                         </div>
                     </div>
-                    <button type="submit" class="col-sm-offset-1 btn btn-primary">Submit</button>
+                    <button type="submit" class="col-sm-offset-1 btn btn-primary sub">Submit</button>
                     <br/>
                 </div>
             </form>
         </div>
         <!-- Footer -->
-        <div class="container-fluid bg-4 text-center">
-            <footer>
-                <p>Copyright LetMeDev4-U</p>
-                <div class="row">
-                    <div class="col-md-offset-10 col-md-3">
-                        <a href="../Controler/articleAdmin.php">
-                            Admin
-                        </a>
-                    </div>
-                </div>
-            </footer>
-        </div>
-    </body>
-    <script>
-        $(function () {
-            $('.editField').on('click', function () {
-                $(this).closest('tr').find('.newa').toggle();
+<?php require "footer.php"?>
+        <script>
+            $(function () {
+                //to sho the hidden fields to edit the posts
+                $('.editField').on('click', function () {
+                    $(this).closest('tr').find('.newa').toggle();
+                });
+
+                // to disabel the submit button to post an article
+                $('.sub').prop('disabled',true);
+
+                //When the user press a button on the keybord the submit button is enabled again
+                $('.inp').keyup(function () {
+                    $('.sub').prop('disabled', false);
+                });
+
+                //Show a confirmation box before deleting the post
+                $('.delpost').on('click', function(){
+
+                    return confirm('Are you sure you want to delete this post?');
+                });
+
+                //Show a confirmation box before updating the post
+                $('.uppost').on('click', function(){
+
+                   return confirm('Please confirm that you want to update this post');
+                });
             });
-        });
-    </script>
+        </script>
+    </body>
 </html>

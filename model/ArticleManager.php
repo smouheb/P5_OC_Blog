@@ -10,7 +10,7 @@ class ArticleManager extends BddConfig
     Public function selectPost($idpost)
     {
         $sql = $this->getBdd()->prepare(
-                                'SELECT title, content, date_article
+                                'SELECT title, content, date_article, chapo
                                             FROM articles
                                             WHERE id = ?');
 
@@ -19,6 +19,7 @@ class ArticleManager extends BddConfig
        $result = $sql->fetch();
 
        $r[] = new Articles($result);
+
        return $r;
     }
 
@@ -44,20 +45,27 @@ class ArticleManager extends BddConfig
        return $r;
     }
 
-    public function insertArticle($name, $title, $content)
+    public function insertArticle($name, $title, $content, $chapo)
     {
-        $db = $this->getBdd();
+        if (!empty($name)&& !empty($title)&& !empty($content)&& !empty($chapo)){
 
-        $sql2 = $db->prepare('INSERT INTO users(user_name, date_entry) VALUES (?, now())');
+            $db = $this->getBdd();
 
-        $sql2->execute(array($name));
+            $sql2 = $db->prepare('INSERT INTO users(user_name, date_entry) VALUES (?, now())');
 
-        $commentId = $db->query('SELECT LAST_INSERT_ID()')->fetchColumn();
+            $sql2->execute(array($name));
 
-        $sql = $db->prepare('INSERT INTO articles (title, content, date_article, id_user)
-                                       VALUES (?, ?,NOW(), ?)');
+            $commentId = $db->query('SELECT LAST_INSERT_ID()')->fetchColumn();
 
-        $sql->execute(array($title, $content, $commentId));
+            $sql = $db->prepare('INSERT INTO articles (title, content, date_article, id_user, chapo)
+                                       VALUES (?, ?,NOW(), ?, ?)');
+
+            $sql->execute(array($title, $content, $commentId, $chapo));
+
+        }else{
+                header('location:../404.php');
+        }
+
 
     }
     /*
@@ -75,14 +83,24 @@ class ArticleManager extends BddConfig
      * @param int ID related to the comment to delete or edit
      * @param string related to the new comment to update
      */
-    public function editComment($content,$idarticle)
+    public function edit($title, $content, $idarticle, $chapo)
     {
-        $db = $this->getBdd();
 
-        $sql = $db->prepare( 'UPDATE articles 
-                                        SET content = ?, date_article = NOW()
-                                        WHERE id = ?');
-        $sql->execute(array($content,$idarticle));
+        if(!empty($title)&& !empty($content)&& !empty($idarticle)&& !empty($chapo)) {
+
+            $db = $this->getBdd();
+
+            $sql = $db->prepare('UPDATE articles 
+                                    SET title = ?, content = ?, date_article = NOW(), chapo = ?
+                                    WHERE id = ?');
+
+            $sql->execute(array($title, $content, $chapo, $idarticle));
+
+        } else{
+
+        header('location:../../404.php');
+
+        }
 
     }
 }

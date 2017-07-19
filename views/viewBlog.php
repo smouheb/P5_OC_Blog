@@ -8,13 +8,13 @@
                 </div>
                 <br/>
                 <div class="row">
-                    <section class="pull-left">
-                        <p style="width: 100%; height: 110px; overflow: hidden;"><?= $result->getContent()?></p>
+                    <section class="center">
+                        <p style="width: 100%; height: 50px; overflow: hidden;"><?= $result->getChapo()?></p>
                     </section>
                 </div>
                 <div class="row">
                     <span class="pull-right">
-                        <a class="btn btn-primary" href="<?="../Controler/articleDetails.php?id=".$result->getId();?>" role="button">
+                        <a class="btn btn-primary details" role="button" href="<?="articleDetails/".$result->getId();?>">
                             Read more
                         </a>
                     </span>
@@ -28,6 +28,5 @@
     <?php endforeach;?>
 <?php $content = ob_get_clean();?>
 <?php include_once '_template.php';?>
-
 
 
