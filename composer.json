@@ -1,7 +1,5 @@
 {
   "require":{
-    "tinymce/tinymce":">= 4",
-    "twbs/bootstrap":"4.0.0-alpha.6",
     "swiftmailer/swiftmailer":"^6.0"
   }
 }
