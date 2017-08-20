@@ -1,7 +1,9 @@
 <?php
-class appController extends viewsManager {
+class appController {
 
     private $defaultpage;
+    private $successpage;
+    private $viewcontact;
     /*
      * There is here one method per controller
      */
@@ -10,7 +12,21 @@ class appController extends viewsManager {
         // to be changed as well
         $this->defaultpage = include'views/home.php';
 
-        return $this->defaultpage;
+        return;
+    }
+
+    public function success(){
+
+        return $this->successpage = include '../messagesuccess.html';
+
+
+    }
+
+    public function vcontact(){
+
+        return $this->viewcontact = include 'views/Contact.php';
+
+
     }
 
     public function articleSelect(){
@@ -20,9 +36,6 @@ class appController extends viewsManager {
         $m = $manager->selectAllPost();
 
         include 'views/viewBlog.php';
-
-        //only the template in showing but the data are not??
-        //$this->viewBlog();
 
         return $m;
     }
@@ -60,7 +73,7 @@ class appController extends viewsManager {
          * Redirection to another page that will also redirect but will mostly clean the url and
          * call the articleAdmin method to show the updates
          */
-        header('location:../../302.php');
+        header('location:../../redirectadmin.php');
 
     }
 
@@ -76,7 +89,7 @@ class appController extends viewsManager {
          * Redirection to another page that will also redirect but will mostly clean the url and
          * call the articleAdmin method to show the updates
          */
-        header('location:../../302.php');
+        header('location:../../redirectadmin.php');
     }
     public function articleInsert($value){
 
@@ -98,5 +111,33 @@ class appController extends viewsManager {
         $r = $admin->selectAllPost();
         include 'views/viewAdmin.php';
     }
+
+    public function contacts($value){
+
+        $contacts = new Contacts($value, 1);
+        $name = $contacts->getName();
+        $email = $contacts->getEmail();
+        $subject = $contacts->getSubject();
+        $message = $contacts->getMessage();
+
+        //Instantiate the class that will send the email
+
+        $transport = (new Swift_SmtpTransport('smtp.gmail.com', 465, "ssl"))
+            ->setUsername('smaelmouheb@gmail.com')
+            ->setPassword('Fadoua18011982');
+
+        $mailer = new Swift_Mailer($transport);
+
+        $message = (new Swift_Message($subject))
+            ->setFrom([$email => $name])
+            ->setTo(['smael.mouheb@gmail.com' => 'Admin'])
+            ->setBody($message);
+
+        $result = $mailer->send($message);
+
+        //Redirect when the message is sent or send to a temporary page saying it is successful before being redirected
+        header('location:../messagesuccess');
+    }
+
 
 }

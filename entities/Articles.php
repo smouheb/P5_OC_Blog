@@ -8,10 +8,11 @@ class Articles
     private $content;
     private $chapo;
 
-    public function __construct($data, $clean = 0)
+    public function __construct($data, $clean=0)
     {
         $this->hydrate($data, $clean);
     }
+
     public function hydrate(array $data, $clean=0)
     {
         foreach ($data as $key=>$value)
@@ -84,7 +85,6 @@ class Articles
 
         }
     }
-
 
     public function setId($id)
     {

@@ -28,7 +28,7 @@
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="<?= ROUTER."articleSelect"?>">Blog</a></li>
-                <li><a href="<?="../views/_templateContact.php"?>">Contact</a></li>
+                <li><a href="<?= ROUTER."Contact"?>">Contact</a></li>
             </ul>
         </div>
     </div>

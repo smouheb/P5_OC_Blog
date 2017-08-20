@@ -15,9 +15,9 @@
                 </tr>
             </table>
         </div>
-        <div class="container-fluid bg-2">
+        <div class="container-fluid bg-2 col-xs-12">
             <h3>Add New Articles</h3>
-            <form class="bg-1" method="POST" action="<?="../index.php/articleInsert"?>">
+            <form class="bg-1 " method="POST" action="<?="../index.php/articleInsert"?>">
                 <div class="row">
                     <div class="col-sm-offset-1 col-sm-2">
                         <div class="form-group">

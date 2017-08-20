@@ -1,11 +1,20 @@
 <?php
-class Routeur extends appController
+class Routeur
 {
-
     private $path_info;
     private $args;
     private $controller_class;
     private $idrequest;
+    private $methodupdate;
+    private $methodinsert;
+    private $methodcontact;
+    private $methodselect;
+    private $methodadmin;
+    private $methoddetails;
+    private $methoddelete;
+    private $home;
+    private $success;
+    private $pagecontact;
 
     /*
      * This constructor is parsing the url passed by the index and put these data in an array
@@ -18,69 +27,82 @@ class Routeur extends appController
         $this->args = array_filter(explode('/',$this->path_info));
 
         $this->controller_class = $this->args[1];
+
         $this->idrequest = $this->args[2];
-
     }
 
     /*
-     * This method is calling controllers depending on the arguments passed
-     * here if there is a value for inserting or creating a post then the related method are called
-     * Else we call another method below
+     * This method is calling the related controllers with or without arguments passed
      */
-    public function routing($value = null){
+    public function routing(appController $classcontroller, $value = null)
+    {
 
-        if(isset($this->path_info)){
+        $param1 = $this->controller_class;
 
-            if (!is_null($value) && isset($this->idrequest) ) {
 
-                    $this->articleUpdate($value, $this->idrequest);
+        $param2 = $this->idrequest;
 
-            } elseif(!is_null($value) && !isset($this->idrequest)){
+        if (isset($this->path_info)) {
 
-                $this->articleInsert($value);
+            if (!is_null($value) && isset($param2)) {
 
-            } else{
+                return $this->methodupdate = $classcontroller->articleUpdate($value, $this->idrequest);
 
-                $this->articleWithParam($this->controller_class, $this->idrequest);
+            } elseif (!is_null($value) && !isset($param2)) {
+
+                switch ($param1) {
+
+                    case $param1 === 'articleInsert':
+                        return $this->methodinsert = $classcontroller->articleInsert($value);
+                        break;
+
+                    case $param1 === 'contacts':
+                        return $this->methodcontact = $classcontroller->contacts($value);
+                        break;
+                }
+
+            } elseif (is_null($value) && isset($param2)) {
+
+                switch ($param1) {
+
+                    case $param1 === 'articleDetails':
+                        return $this->methoddetails = $classcontroller->articleDetails($param2);
+                        break;
+
+                    case $param1 === 'articleDelete':
+                        return $this->methoddelete = $classcontroller->articleDelete($param2);
+                        break;
+                }
+
+            } elseif (is_null($value) && !isset($param2)) {
+
+                switch ($param1) {
+
+                    case $param1 === 'articleSelect':
+                        return $this->methodselect = $classcontroller->articleSelect();
+                        break;
+
+                    case $param1 === 'articleAdmin':
+                        return $this->methodadmin = $classcontroller->articleAdmin();
+                        break;
+
+                    case $param1 === 'messagesuccess':
+                        return $this->success = $classcontroller->success();
+                    break;
+
+                    case $param1 === 'Contact':
+                        return $this->pagecontact = $classcontroller->vcontact();
+                    break;
+
+                    case $param1 === 'home':
+                        return $this->home = $classcontroller->home();
+                    break;
+                }
             }
+        } else {
 
-        } else{
-
-            $this->home();
+            return $classcontroller->home();
         }
     }
 
-    /*
-     * I separated this method from the one above to have a cleaner code (here we request data mostly and the one above we insert which requires different parameters)
-     * And this is more adapted, as the first parameter is always the controller name
-     * the second is an id
-     */
-    public function articleWithParam($param1 = null, $param2 = null){
-
-
-        switch($param1){
-
-            case $param1 === 'home':
-                return $this->home();
-            break;
-
-            case $param1 === 'articleSelect':
-                return $this->articleSelect();
-            break;
-
-            case $param1 === 'articleAdmin':
-                return $this->articleAdmin();
-            break;
-
-            case $param1 === 'articleDetails':
-                return $this->articleDetails($param2);
-            break;
-
-            case $param1 === 'articleDelete':
-                return $this->articleDelete($param2);
-            break;
-
-        }
-
-    }
 }

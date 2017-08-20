@@ -1,4 +1,5 @@
 <?php
+include 'vendor/autoload.php';
 include 'config.php';
 include 'app/Routeur.php';
 //Data retrieved from "post", to edit the article from the admin page
@@ -12,5 +13,5 @@ $path_info = $_SERVER['PATH_INFO'];
 
 //Instantiating class routeur to get the related controllers
 $routingBlog = new Routeur($path_info);
-$routingBlog->routing($value);
-
+$appcontroller = new appController();
+$routingBlog->routing($appcontroller, $value);
