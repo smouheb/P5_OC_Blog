@@ -123,14 +123,14 @@ class appController {
         //Instantiate the class that will send the email
 
         $transport = (new Swift_SmtpTransport('smtp.gmail.com', 465, "ssl"))
-            ->setUsername('smaelmouheb@gmail.com')
-            ->setPassword('Fadoua18011982');
+            ->setUsername('youremail@gmail.com')
+            ->setPassword('yourpassword');
 
         $mailer = new Swift_Mailer($transport);
 
         $message = (new Swift_Message($subject))
             ->setFrom([$email => $name])
-            ->setTo(['smael.mouheb@gmail.com' => 'Admin'])
+            ->setTo(['email@gmail.com' => 'Admin'])
             ->setBody($message);
 
         $result = $mailer->send($message);
