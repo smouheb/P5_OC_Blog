@@ -43,7 +43,9 @@ Web Server Apache version --> 2.2.29 (Unix)
 **To install this blog, clone this repository or download the project and:
 
 Step 1 : Create a database name it the way you want and import into it the sql file called 'yourname.sql' (I have left an example of the database configuration and the tables I have used under 'db.sql')
-Step 3 : In model/BddConfig.php change the database's host/name/password to yours
-Step 4 : To change the email service go to app/appController, in method "contacts", line between 125 and 127 add your email service(I have left gmail smtp configuration as an example and/or should you have the same), in other lines add your username and password. 
+
+Step 2 : In model/BddConfig.php change the database's host/name/password to yours
+
+Step 3 : To change the email service go to app/appController, in method "contacts", line between 125 and 127 add your email service(I have left gmail smtp configuration as an example and/or should you have the same), in other lines add your username and password. 
 In line 133 add your email address or any email address that is meant to receive the email that will be sent from your blog.
 Note: for me it worked locally as well
